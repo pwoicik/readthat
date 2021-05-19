@@ -2,16 +2,10 @@ const postIDs = [
     "create-post-box",
     "create-post-headline",
     "create-post-content",
-    "create-post-cancel-button",
-    "create-post-post-button",
 ];
 
-const invalidMessageAlert_el = document.getElementById("invalid-message-alert");
-const headline_el = document.getElementById("create-post-headline");
-const content_el = document.getElementById("create-post-content");
-const action_buttons_el = document.getElementById("create-post-action-buttons");
 headline_el.onclick = () => {
-    headline_el.placeholder = "Headline";
+    headline_el.placeholder = "Headline (max 100 characters)";
     content_el.style.display = "block";
     action_buttons_el.style.display = "block";
 };

@@ -1,29 +1,42 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>ReadThat</title>
-  <meta name="description" content="ReadThat shitposting">
-  <meta name="author" content="Krucan Andrzej & Wójcik Patryk">
+    <title>ReadThat</title>
+    <meta name="description" content="ReadThat shitposting">
+    <meta name="author" content="Krucan Andrzej & Wójcik Patryk">
 
-  <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/main.css">
 </head>
 
 <body>
     <main>
         <div id="invalid-message-alert">Invalid message!</div>
-        <form id="create-post-box" class="bordered frame" action="#" onsubmit="createPost(event)">
+        <form id="create-post-box" class="bordered framed" action="#" onsubmit="createPost(event)">
             <input type="text" placeholder="Create post" id="create-post-headline" />
             <input type="text" placeholder="Content" id="create-post-content" style="display: none;" />
             <div id="create-post-action-buttons" style="display: none;">
                 <button id="create-post-cancel-button" type="reset">Cancel</button>
-                <button id="create-post-post-button" type="submit" class="bordered">Post</button>
+                <button id="create-post-submit-button" type="submit" class="bordered">Post</button>
             </div>
         </form>
         <div id="posts" />
     </main>
+    <script>
+        const postBoard = document.getElementById("posts");
+        const invalidMessageAlert_el = document.getElementById("invalid-message-alert");
+        const headline_el = document.getElementById("create-post-headline");
+        const content_el = document.getElementById("create-post-content");
+        const action_buttons_el = document.getElementById("create-post-action-buttons");
+
+        function getLastPostID() {
+            return +postBoard.lastElementChild.getAttribute("data-post-id");
+        }
+    </script>
     <script src="script/create_post.js"></script>
     <script src="script/load_posts.js"></script>
+    <script src="script/post_board.js"></script>
 </body>
 </html>
