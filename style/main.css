@@ -1,0 +1,87 @@
+* {
+    font-family: sans-serif;
+    color: #cccccc;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    padding: 2rem 0;
+    max-width: 50rem;
+    min-width: 50rem;
+}
+
+.frame {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    background-color: #151515;
+    padding: 0.7rem 1rem;
+}
+
+input {
+    all: unset;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #212121;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+button:hover {
+    text-decoration: underline;
+}
+
+input:hover {
+    border: 1px solid whitesmoke;
+}
+
+.bordered {
+    border: solid 1px #777777;
+    border-radius: 5px;
+}
+
+#create-post-action-buttons {
+    align-self: flex-end;
+}
+
+#create-post-cancel-button {
+    color: #bb0000;
+}
+
+#create-post-post-button {
+    margin-left: 1rem;
+    padding: 0.3rem 0.5rem;
+    color: #008000;
+}
+
+#posts {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.post:hover {
+    border: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.post > header {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>ReadThat</title>
+  <meta name="description" content="ReadThat shitposting">
+  <meta name="author" content="Krucan Andrzej & Wójcik Patryk">
+
+  <link rel="stylesheet" href="style/main.css">
+</head>
+
+<body>
+    <main>
+        <form id="create-post-box" class="bordered frame" method="POST" action="php/send_post.php">
+            <input type="text" name="headline" placeholder="Create post" id="create-post-button" />
+            <input type="text" name="content" placeholder="Content" id="create-post-content" style="display: none;" />
+            <div id="create-post-action-buttons" style="display: none;">
+                <button id="create-post-cancel-button" type="reset">Cancel</button>
+                <button id="create-post-post-button" type="submit" class="bordered">Post</button>
+            </div>
+        </form>
+        <div id="posts" />
+    </main>
+    <script src="script/create_post.js"></script>
+    <script src="script/load_posts.js"></script>
+</body>
+</html>
