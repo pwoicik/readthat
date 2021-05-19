@@ -15,7 +15,7 @@ function createPostEl({ id, timestamp, headline, content }) {
 
     const content_el = document.createElement("p");
     if (content.length > 600) {
-        content_el.innerText = content.substring(0, 600);
+        content_el.innerText = content.substring(0, 599) + "…";
         post_el.classList.add("overflowing-post");
     } else {
         content_el.innerText = content;

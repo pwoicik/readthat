@@ -79,12 +79,10 @@ input:hover {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    width: 100%;
 }
 
 .post {
     gap: 0;
-    width: 100%;
 }
 
 .post:hover {
@@ -100,10 +98,10 @@ input:hover {
 
 .post.overflowing-post > p::after {
     display: block;
-    content: "Expand";
+    content: "Show more";
     font-weight: bold;
-    margin-top: 0.7rem;
-    text-align: center;
+    margin-top: 0.3rem;
+    text-align: right;
 }
 
 .post.overflowing-post:hover > p::after {
