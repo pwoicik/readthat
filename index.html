@@ -12,9 +12,10 @@
 
 <body>
     <main>
-        <form id="create-post-box" class="bordered frame" method="POST" action="php/send_post.php">
-            <input type="text" name="headline" placeholder="Create post" id="create-post-button" />
-            <input type="text" name="content" placeholder="Content" id="create-post-content" style="display: none;" />
+        <div id="invalid-message-alert">Invalid message!</div>
+        <form id="create-post-box" class="bordered frame" action="#" onsubmit="createPost(event)">
+            <input type="text" placeholder="Create post" id="create-post-headline" />
+            <input type="text" placeholder="Content" id="create-post-content" style="display: none;" />
             <div id="create-post-action-buttons" style="display: none;">
                 <button id="create-post-cancel-button" type="reset">Cancel</button>
                 <button id="create-post-post-button" type="submit" class="bordered">Post</button>

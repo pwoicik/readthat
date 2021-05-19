@@ -85,3 +85,18 @@ input:hover {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
+
+#invalid-message-alert {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #bb0000;
+    top: -2.5rem;
+    transition: top ease-out 0.5s;
+    font-size: 1.3rem;
+    padding: 0.3rem 0.5rem;
+}
+
+#invalid-message-alert.visible {
+    top: 4rem;
+}

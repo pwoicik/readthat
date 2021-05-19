@@ -9,6 +9,4 @@
     ];
     $sql = "INSERT INTO posts VALUES (default, :headline, :content)";
     $pdo->prepare($sql)->execute($data);
-
-    header("location:..");
 ?>
