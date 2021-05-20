@@ -44,6 +44,8 @@
         const actionButtons_el = document.getElementById("create-post-action-buttons");
         const cancelActionButton_el = document.getElementById("create-post-cancel-button");
 
+        let isLoading = true;
+
         function getLastPostID() {
             return +postBoard.lastElementChild.getAttribute("data-post-id");
         }

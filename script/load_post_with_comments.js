@@ -1,5 +1,3 @@
-let isLoading = true;
-
 function getPost(id) {
     return fetch(`../php/get_posts.php?id=${id}`);
 }
@@ -18,7 +16,7 @@ function createPostEl({ id, timestamp, headline, content }) {
 
     const header_el = document.createElement("header");
     post_el.appendChild(header_el);
-    
+
     const timestamp_el = document.createElement("p");
     timestamp_el.classList.add("timestamp");
     timestamp_el.innerText = new Date(timestamp).toLocaleString();
@@ -82,7 +80,7 @@ function createCommentFormEl() {
     return form_el;
 }
 
-function createCommentEl({id, timestamp, content}) {
+function createCommentEl({ id, timestamp, content }) {
     const comment_el = document.createElement("article");
     comment_el.classList.add("comment");
     comment_el.setAttribute("data-comment-id", id);
@@ -107,7 +105,7 @@ function appendCommentsToPost(post_el, comments) {
     separator_el.classList.add("separator");
     post_el.appendChild(separator_el);
 
-    const commentsSection_el = document.createElement("section");
+    commentsSection_el = document.createElement("section");
     commentsSection_el.id = "comments-section";
     post_el.appendChild(commentsSection_el);
 
@@ -136,3 +134,26 @@ async function loadPostWithComments() {
 }
 
 loadPostWithComments();
+
+function showComments(comments) {
+    if (!commentsSection_el) {
+        throw "Couldn't find comments section";
+    }
+
+    for (const comment of comments) {
+        const comment_el = createCommentEl(comment);
+        commentsSection_el.appendChild(comment_el);
+    }
+}
+
+async function loadComments(start) {
+    isLoading = true;
+
+    const postID = getPostID();
+    const comments = await getComments(postID, start).then(data => data.json());
+
+    showComments(comments);
+    isLoading = false;
+
+    return comments.length;
+}

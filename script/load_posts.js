@@ -1,5 +1,3 @@
-let isLoading = true;
-
 function getPosts(start) {
     if (start) {
         return fetch(`./php/get_posts.php?start=${start}`).then(data => data.json());

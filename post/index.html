@@ -2,31 +2,40 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>ReadThat</title>
-  <meta name="description" content="ReadThat post board">
-  <meta name="author" content="Krucan Andrzej & Wójcik Patryk">
+    <title>ReadThat</title>
+    <meta name="description" content="ReadThat post board">
+    <meta name="author" content="Krucan Andrzej & Wójcik Patryk">
 
-  <link rel="stylesheet" href="../style/main.css">
-  <link rel="stylesheet" href="../style/post_page.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/post_page.css">
 </head>
 
 <body>
-  <div id="invalid-message-alert">Invalid message!</div>
-  <main id="main"></main>
+    <div id="invalid-message-alert">Invalid message!</div>
+    <main id="main"></main>
 
-  <script>
-    const mainSection = document.getElementById("main");
-    const invalidMessageAlert_el = document.getElementById("invalid-message-alert");
+    <script>
+        const mainSection = document.getElementById("main");
+        let commentsSection_el = null;
+        const invalidMessageAlert_el = document.getElementById("invalid-message-alert");
 
-    function getPostID() {
-    const query = new URLSearchParams(location.search);
-    return query.get("id");
-}
-  </script>
+        let isLoading = true;
+
+        function getPostID() {
+            const query = new URLSearchParams(location.search);
+            return query.get("id");
+        }
+
+        function getLastCommentID() {
+            const comment_el = document.querySelector("article.comment:last-of-type");
+            return comment_el.getAttribute("data-comment-id");
+        }
+    </script>
     <script src="../script/invalid_message_alert.js"></script>
     <script src="../script/create_comment.js"></script>
-  <script src="../script/load_post_with_comments.js"></script>
+    <script src="../script/load_post_with_comments.js"></script>
+    <script src="../script/comments_section.js"></script>
 </body>
 </html>
