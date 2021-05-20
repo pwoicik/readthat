@@ -3,7 +3,7 @@ function getPost(id) {
 }
 
 function getComments(postID, start) {
-    if (start) {
+    if (typeof start !== "undefined") {
         return fetch(`../php/get_comments.php?post_id=${postID}&start=${start}`);
     }
     return fetch(`../php/get_comments.php?post_id=${postID}`);
@@ -28,12 +28,7 @@ function createPostEl({ id, timestamp, headline, content }) {
 
     const content_el = document.createElement("p");
     content_el.classList.add("post-content");
-    if (content.length > 600) {
-        content_el.innerText = content.substring(0, 599) + "…";
-        post_el.classList.add("overflowing-post");
-    } else {
-        content_el.innerText = content;
-    }
+    content_el.innerText = content;
     post_el.appendChild(content_el);
 
     return post_el;
@@ -136,10 +131,6 @@ async function loadPostWithComments() {
 loadPostWithComments();
 
 function showComments(comments) {
-    if (!commentsSection_el) {
-        throw "Couldn't find comments section";
-    }
-
     for (const comment of comments) {
         const comment_el = createCommentEl(comment);
         commentsSection_el.appendChild(comment_el);
@@ -152,8 +143,10 @@ async function loadComments(start) {
     const postID = getPostID();
     const comments = await getComments(postID, start).then(data => data.json());
 
-    showComments(comments);
-    isLoading = false;
+    if (comments.length) {
+        showComments(comments);
+    }
 
+    isLoading = false;
     return comments.length;
 }

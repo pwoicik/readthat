@@ -1,5 +1,5 @@
 function getPosts(start) {
-    if (start) {
+    if (typeof start !== "undefined") {
         return fetch(`./php/get_posts.php?start=${start}`).then(data => data.json());
     }
     return fetch("./php/get_posts.php").then(data => data.json());
