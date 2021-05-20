@@ -5,19 +5,27 @@
     <meta charset="utf-8">
 
     <title>ReadThat</title>
-    <meta name="description" content="ReadThat shitposting">
+    <meta name="description" content="ReadThat post board">
     <meta name="author" content="Krucan Andrzej & Wójcik Patryk">
 
     <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/index_page.css">
 </head>
 
 <body>
+    <div id="invalid-message-alert">Invalid message!</div>
     <main>
-        <div id="invalid-message-alert">Invalid message!</div>
         <form id="create-post-box" class="bordered framed" action="#" onsubmit="createPost(event)">
-            <input type="text" placeholder="Create post" maxlength="100" id="create-post-headline" />
-            <input type="text" placeholder="Content" id="create-post-content" style="display: none;" />
+            <div class="input" id="headline-input">
+                <span id="headline-placeholder" class="placeholder">Create post</span>
+                <span id="create-post-headline" class="editable" role="textbox" contenteditable></span>
+            </div>
+            <div class="input" id="content-input" style="display: none;">
+                <span id="content-placeholder" class="placeholder">Content</span>
+                <span id="create-post-content" class="editable" role="textbox" contenteditable></span>
+            </div>
             <div id="create-post-action-buttons" style="display: none;">
+                <div class="positioning-guide" style="flex: 1;"></div>
                 <button id="create-post-cancel-button" type="reset">Cancel</button>
                 <button id="create-post-submit-button" type="submit" class="bordered">Post</button>
             </div>
@@ -27,14 +35,20 @@
     <script>
         const postBoard = document.getElementById("posts");
         const invalidMessageAlert_el = document.getElementById("invalid-message-alert");
+        const headlineInput_el = document.getElementById("headline-input");
         const headline_el = document.getElementById("create-post-headline");
+        const headlinePlaceholder_el = document.getElementById("headline-placeholder");
+        const contentInput_el = document.getElementById("content-input");
         const content_el = document.getElementById("create-post-content");
-        const action_buttons_el = document.getElementById("create-post-action-buttons");
+        const contentPlaceholder_el = document.getElementById("content-placeholder");
+        const actionButtons_el = document.getElementById("create-post-action-buttons");
+        const cancelActionButton_el = document.getElementById("create-post-cancel-button");
 
         function getLastPostID() {
             return +postBoard.lastElementChild.getAttribute("data-post-id");
         }
     </script>
+    <script src="script/invalid_message_alert.js"></script>
     <script src="script/create_post.js"></script>
     <script src="script/load_posts.js"></script>
     <script src="script/post_board.js"></script>

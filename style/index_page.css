@@ -1,0 +1,71 @@
+.framed {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #151515;
+    padding: 0.7rem 1rem;
+}
+
+.bordered {
+    border: solid 1px #777777;
+    border-radius: 5px;
+}
+
+form {
+    gap: 1rem;
+}
+
+form > * {
+    width: 100%;
+}
+
+span.editable:hover {
+    border: 1px solid whitesmoke;
+}
+
+.positioning-guide {
+    pointer-events: none;
+}
+
+#create-post-action-buttons {
+    align-self: flex-end;
+}
+
+#create-post-cancel-button {
+    color: #bb0000;
+}
+
+#create-post-submit-button {
+    margin-left: 1rem;
+    padding: 0.3rem 0.5rem;
+    color: #008000;
+}
+
+#posts {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.post:hover {
+    border: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.post.overflowing-post .post-content::after {
+    display: block;
+    content: "Show more";
+    font-weight: bold;
+    margin-top: 0.3rem;
+    text-align: right;
+}
+
+.post.overflowing-post .post-content:hover::after {
+    text-decoration: underline;
+}
+
+.comment-count {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}

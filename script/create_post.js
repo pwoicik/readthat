@@ -2,35 +2,58 @@ const postIDs = [
     "create-post-box",
     "create-post-headline",
     "create-post-content",
+    "create-post-action-buttons",
+    "create-post-submit-button",
+    "create-post-cancel-button",
 ];
 
-headline_el.onclick = () => {
-    headline_el.placeholder = "Headline (max 100 characters)";
-    content_el.style.display = "block";
-    action_buttons_el.style.display = "block";
-};
+const headlinePlaceholder = "Create post";
+const headlineActivePlaceholder = "Headline (max 100 characters)";
+
+function expandForm() {
+    headlinePlaceholder_el.innerText = headlineActivePlaceholder;
+    contentPlaceholder_el.style.display = "inline";
+    contentInput_el.style.display = "flex";
+    actionButtons_el.style.display = "flex";
+}
+
+function collapseForm() {
+    headlinePlaceholder_el.innerText = headlinePlaceholder;
+    headlinePlaceholder_el.style.display = "inline";
+    contentInput_el.style.display = "none";
+    actionButtons_el.style.display = "none";
+}
+
+headline_el.onclick = expandForm;
 
 document.onclick = (ev) => {
-    if (!headline_el.value && !content_el.value && !postIDs.includes(ev.target.id)) {
-        headline_el.placeholder = "Create post";
-        content_el.style.display = "none";
-        action_buttons_el.style.display = "none";
+    if (!postIDs.includes(ev.target.id) && !headline_el.innerText && !content_el.innerText) {
+        collapseForm();
     }
+};
+
+headline_el.oninput = () => {
+    headlinePlaceholder_el.style.display = headline_el.innerText.length == 0 ? "inline" : "none";
+};
+
+content_el.oninput = () => {
+    contentPlaceholder_el.style.display = content_el.innerText.length == 0 ? "inline" : "none";
+};
+
+cancelActionButton_el.onclick = () => {
+    headline_el.innerText = "";
+    content_el.innerText = "";
+    collapseForm();
 };
 
 function createPost(ev) {
     ev.preventDefault();
 
-    const headline = headline_el.value.trim();
-    const content = content_el.value.trim();
+    const headline = headline_el.innerText.trim();
+    const content = content_el.innerText.trim();
 
-    if (!headline.length || !content.length) {
-        invalidMessageAlert_el.classList.add("visible");
-        setTimeout(() => {
-            if (invalidMessageAlert_el.classList.contains("visible"))
-                invalidMessageAlert_el.classList.remove("visible");
-        }, 2000);
-
+    if (!headline.length || !content.length || headline.length > 100) {
+        showInvalidMessageAlert();
         return;
     }
 

@@ -28,6 +28,10 @@ input {
     border: 1px solid transparent;
 }
 
+input:hover {
+    border: 1px solid whitesmoke;
+}
+
 a {
     all: unset;
     box-sizing: border-box;
@@ -42,74 +46,20 @@ button:hover {
     text-decoration: underline;
 }
 
-input:hover {
-    border: 1px solid whitesmoke;
-}
-
-.framed {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    background-color: #151515;
-    padding: 0.7rem 1rem;
-}
-
-.bordered {
-    border: solid 1px #777777;
-    border-radius: 5px;
-}
-
-#create-post-action-buttons {
-    align-self: flex-end;
-}
-
-#create-post-cancel-button {
-    color: #bb0000;
-}
-
-#create-post-submit-button {
-    margin-left: 1rem;
-    padding: 0.3rem 0.5rem;
-    color: #008000;
-}
-
-#posts {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.post {
-    gap: 0;
-}
-
-.post:hover {
-    border: 1px solid whitesmoke;
-    cursor: pointer;
-}
-
-.post > header {
+.post header {
     font-size: 1.1rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.3rem;
     font-weight: bold;
 }
 
-.post.overflowing-post > p::after {
-    display: block;
-    content: "Show more";
-    font-weight: bold;
-    margin-top: 0.3rem;
-    text-align: right;
-}
-
-.post.overflowing-post:hover > p::after {
-    text-decoration: underline;
+.timestamp {
+    font-size: 0.78rem;
+    color: #999999;
 }
 
 #invalid-message-alert {
     position: fixed;
+    z-index: 1;
     left: 50%;
     transform: translateX(-50%);
     background-color: #bb0000;
@@ -123,10 +73,25 @@ input:hover {
     top: 4rem;
 }
 
-.timestamp {
-    font-size: 0.78rem;
-    font-weight: bold;
-    font-style: italic;
+.input {
+    position: relative;
+    display: flex;
+}
+
+.input > * {
+    padding: 0.5rem 1rem;
+}
+
+span.editable {
+    display: block;
+    width: 100%;
+    background-color: #212121;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+.placeholder {
+    pointer-events: none;
+    position: absolute;
     color: #999999;
-    margin-bottom: 0.3rem;
 }

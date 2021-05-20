@@ -2,9 +2,9 @@
     include "pdo.php";
 
     $data = [
-        "headline" => $_POST["headline"],
+        "postID" => $_POST["post_id"],
         "content" => $_POST["content"],
     ];
-    $query = "INSERT INTO posts VALUES (default, :headline, :content)";
+    $query = "INSERT INTO comments VALUES (default, :postID, :content)";
     $pdo->prepare($query)->execute($data);
 ?>

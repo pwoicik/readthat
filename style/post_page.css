@@ -1,0 +1,58 @@
+.post {
+    padding: 0.7rem 1rem;
+    background-color: #151515;
+    border-radius: 5px;
+}
+
+form {
+    margin: 2rem 0;
+    border-radius: 5px;
+    background-color: #353535
+}
+
+span.editable {
+    min-height: 6rem;
+    background-color: #151515;
+    border: 1px solid #353535;
+}
+
+span.editable:focus {
+    outline: none;
+}
+
+#bottom-form-bar {
+    display: flex;
+    padding: 0.3rem 0.5rem;
+    justify-content: center;
+}
+
+#send-button {
+    margin-left: auto;
+    align-self: flex-end;
+    background-color: #dddddd;
+    border-radius: 20px;
+    color: #353535;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+}
+
+.separator {
+    border-bottom: 1px solid #353535;
+}
+
+#comments-section {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comment {
+    border-left: 3px solid #858585;
+    padding: 0.3rem 0 0.3rem 0.8rem;
+}
+
+.comment > p:first-of-type {
+    margin-bottom: 0.3rem;
+}

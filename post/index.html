@@ -1,17 +1,32 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
 
   <title>ReadThat</title>
-  <meta name="description" content="ReadThat shitposting">
+  <meta name="description" content="ReadThat post board">
   <meta name="author" content="Krucan Andrzej & Wójcik Patryk">
 
   <link rel="stylesheet" href="../style/main.css">
+  <link rel="stylesheet" href="../style/post_page.css">
 </head>
 
 <body>
-    <h1>abc</h1>
-    <script src="../script/post.js"></script>
+  <div id="invalid-message-alert">Invalid message!</div>
+  <main id="main"></main>
+
+  <script>
+    const mainSection = document.getElementById("main");
+    const invalidMessageAlert_el = document.getElementById("invalid-message-alert");
+
+    function getPostID() {
+    const query = new URLSearchParams(location.search);
+    return query.get("id");
+}
+  </script>
+    <script src="../script/invalid_message_alert.js"></script>
+    <script src="../script/create_comment.js"></script>
+  <script src="../script/load_post_with_comments.js"></script>
 </body>
 </html>
