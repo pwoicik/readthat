@@ -13,8 +13,8 @@ const headlineActivePlaceholder = "Headline (max 100 characters)";
 function expandForm() {
     headlinePlaceholder_el.innerText = headlineActivePlaceholder;
     contentPlaceholder_el.style.display = "inline";
-    contentInput_el.style.display = "flex";
-    actionButtons_el.style.display = "flex";
+    contentInput_el.style.display = "block";
+    actionButtons_el.style.display = "block";
 }
 
 function collapseForm() {
@@ -27,6 +27,7 @@ function collapseForm() {
 headline_el.onclick = expandForm;
 
 document.onclick = (ev) => {
+    console.log(ev.target.id);
     if (!postIDs.includes(ev.target.id) && !headline_el.innerText && !content_el.innerText) {
         collapseForm();
     }

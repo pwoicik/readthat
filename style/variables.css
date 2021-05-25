@@ -1,0 +1,15 @@
+:root {
+    --clr-200: #cccccc;
+    --clr-250: #dddddd;
+    --clr-300: #999999;
+    --clr-400: #858585;
+    --clr-500: #777777;
+    --clr-600: #313131;
+    --clr-700: #212121;
+    --clr-800: #151515;
+    --clr-900: #020202;
+    --alert-bg-color: rgb(158, 10, 40);
+    --alert-fg-color: white;
+    --cancel-color: rgb(190, 32, 64);
+    --submit-color: rgb(21, 165, 52);
+}

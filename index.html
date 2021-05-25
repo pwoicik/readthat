@@ -8,32 +8,32 @@
     <meta name="description" content="ReadThat post board">
     <meta name="author" content="Krucan Andrzej & Wójcik Patryk">
 
-    <link rel="stylesheet" href="style/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="style/index_page.css">
 </head>
 
 <body>
     <div id="invalid-message-alert">Invalid message!</div>
     <main>
-        <form id="create-post-box" class="bordered framed" action="#" onsubmit="createPost(event)">
-            <div class="input" id="headline-input">
+        <form id="create-post-box" class="bordered background-grey" action="#" onsubmit="createPost(event)">
+            <div class="custom-input" id="headline-input">
                 <span id="headline-placeholder" class="placeholder">Create post</span>
                 <span id="create-post-headline" class="editable" role="textbox" contenteditable></span>
             </div>
-            <div class="input" id="content-input" style="display: none;">
+            <div class="custom-input" id="content-input" style="display: none;">
                 <span id="content-placeholder" class="placeholder">Content</span>
                 <span id="create-post-content" class="editable" role="textbox" contenteditable></span>
             </div>
             <div id="create-post-action-buttons" style="display: none;">
-                <div class="positioning-guide" style="flex: 1;"></div>
                 <button id="create-post-cancel-button" type="reset">Cancel</button>
-                <button id="create-post-submit-button" type="submit" class="bordered">Post</button>
+                <button id="create-post-submit-button" type="submit" class="submit-button">Post</button>
             </div>
         </form>
         <div id="posts" />
     </main>
     <script>
-        const postBoard = document.getElementById("posts");
+        const postBoard_el = document.getElementById("posts");
         const invalidMessageAlert_el = document.getElementById("invalid-message-alert");
         const headlineInput_el = document.getElementById("headline-input");
         const headline_el = document.getElementById("create-post-headline");
@@ -47,7 +47,7 @@
         let isLoading = true;
 
         function getLastPostID() {
-            return +postBoard.lastElementChild.getAttribute("data-post-id");
+            return postBoard_el.lastElementChild.getAttribute("data-post-id");
         }
     </script>
     <script src="script/invalid_message_alert.js"></script>

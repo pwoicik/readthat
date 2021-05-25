@@ -11,7 +11,7 @@ function getComments(postID, start) {
 
 function createPostEl({ id, timestamp, headline, content }) {
     const post_el = document.createElement("article");
-    post_el.classList.add("post");
+    post_el.classList.add("post", "background-grey");
     post_el.setAttribute("data-post-id", id);
 
     const header_el = document.createElement("header");
@@ -19,7 +19,7 @@ function createPostEl({ id, timestamp, headline, content }) {
 
     const timestamp_el = document.createElement("p");
     timestamp_el.classList.add("timestamp");
-    timestamp_el.innerText = new Date(timestamp).toLocaleString();
+    timestamp_el.innerText = "Posted on " + new Date(timestamp).toLocaleString();
     header_el.appendChild(timestamp_el);
 
     const headline_el = document.createElement("h1");
@@ -41,7 +41,7 @@ function createCommentFormEl() {
 
     const inputDiv_el = document.createElement("div");
     inputDiv_el.id = "comment-input";
-    inputDiv_el.classList.add("input");
+    inputDiv_el.classList.add("custom-input");
     form_el.appendChild(inputDiv_el);
 
     const placeholder_el = document.createElement("span");
@@ -67,6 +67,7 @@ function createCommentFormEl() {
 
     const sendButton_el = document.createElement("button");
     sendButton_el.id = "send-button";
+    sendButton_el.classList.add("submit-button");
     sendButton_el.innerText = "Comment";
     bottomDiv_el.appendChild(sendButton_el);
 
@@ -86,6 +87,7 @@ function createCommentEl({ id, timestamp, content }) {
     comment_el.appendChild(timestamp_el);
 
     const content_el = document.createElement("p");
+    content_el.classList.add("comment-content");
     content_el.innerText = content;
     comment_el.appendChild(content_el);
 
