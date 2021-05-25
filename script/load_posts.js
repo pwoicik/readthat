@@ -19,7 +19,7 @@ function createPostEl({ id, timestamp, headline, content, comment_count }) {
     
     const timestamp_el = document.createElement("p");
     timestamp_el.classList.add("timestamp");
-    timestamp_el.innerText = "Posted on " + new Date(timestamp).toLocaleString();
+    timestamp_el.innerText = "Posted on " + new Date(timestamp + ":00").toLocaleString();
     header_el.appendChild(timestamp_el);
 
     const headline_el = document.createElement("h1");
