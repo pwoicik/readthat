@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>ReadThat</title>
+    <meta name="description" content="ReadThat post board" />
+    <meta name="author" content="Krucan Andrzej & Wójcik Patryk" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="style/post_page.css" />
+  </head>
+
+  <body>
+    <div id="invalid-message-alert">Invalid message!</div>
+    <main id="main"></main>
+
+    <script type="module">
+      import ThreadViewManager from "./script/thread_view_manager.js";
+
+      const mainSection_el = document.getElementById("main");
+      const manager = new ThreadViewManager(mainSection_el);
+      manager.setup();
+    </script>
+  </body>
+</html>

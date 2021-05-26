@@ -1,26 +1,27 @@
 @import "./style.css";
 
 #create-post-action-buttons {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
-.post:hover, .custom-input:hover {
-    border: 1px solid var(--clr-200);
-    border-radius: 5px;
+.post:hover,
+.custom-input:hover {
+  border: 1px solid var(--clr-250);
+  border-radius: 5px;
 }
 
 .overflowing-post .post-content {
-    position: relative;
+  position: relative;
 }
 
 .overflowing-post .post-content::after {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 7rem;
-    content: "";
-    pointer-events: none;
-    background: linear-gradient(to top, var(--clr-800) 7%, transparent 100%);
-    opacity: 0.8;
+  position: absolute;
+  left: -0.3rem;
+  bottom: 0;
+  width: calc(100% + 0.6rem);
+  height: 7rem;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(to top, var(--clr-800) 7%, transparent 100%);
+  opacity: 0.8;
 }

@@ -1,40 +1,48 @@
 @import "./style.css";
 
 form {
-    padding: 0;
-    background: var(--clr-600);
-    gap: 0;
-    margin: 4rem 0;
+  padding: 0;
+  background: var(--clr-600);
+  gap: 0;
+  margin: 4rem 0;
 }
 
 .bordered {
-    border-color: var(--clr-600);
+  border-color: var(--clr-600);
 }
 
 #comment-content {
-    min-height: 10rem;
+  min-height: 10rem;
 }
 
 .editable {
-    background: var(--clr-800);
+  background: var(--clr-800);
+}
+
+.editable:is(:focus, :active) {
+  outline: none;
 }
 
 #bottom-form-bar {
-    align-self: flex-end;
-    padding: 0.3rem;
+  align-self: flex-end;
+  padding: 0.3rem;
 }
 
 .separator {
-    width: 95%;
-    border-bottom: 1px solid var(--clr-500);
-    margin: 0 2.5%;
+  width: 95%;
+  border-bottom: 1px solid var(--clr-500);
+  margin: 0 2.5%;
+}
+
+#comments-section.empty {
+  padding: 3rem 0;
 }
 
 .comment {
-    border-left: 2px solid var(--clr-400);
-    padding: 0.3rem 0 0.3rem 0.8rem;
+  border-left: 2px solid var(--clr-400);
+  padding: 0.3rem 0 0.3rem 0.8rem;
 }
 
 .comment-content {
-    margin-top: 0.3rem;
+  margin-top: 0.3rem;
 }
