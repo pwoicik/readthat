@@ -1,11 +1,16 @@
+let resolvePromise = null;
+
 export default class ScrollHandler {
   handlerFunction = null;
+  isFinished = null;
 
   constructor(updateCondition, updateFunction) {
     this.handlerFunction = this.createHandlerFunction(
       updateCondition,
       updateFunction
     );
+
+    this.isFinished = new Promise(resolve => (resolvePromise = resolve));
   }
 
   createHandlerFunction(updateCondition, updateFunction) {
@@ -26,11 +31,15 @@ export default class ScrollHandler {
 
   register() {
     window.addEventListener("scroll", this.handlerFunction, { passive: true });
+
+    return this.isFinished;
   }
 
   remove() {
     window.removeEventListener("scroll", this.handlerFunction, {
       passive: true,
     });
+
+    resolvePromise();
   }
 }

@@ -6,7 +6,7 @@ export default class InvalidMessageAlert {
     setTimeout(() => {
       if (this.alert_el.classList.contains("visible"))
         this.alert_el.classList.remove("visible");
-    }, 2000);
+    }, 3000);
   }
 
   constructor() {

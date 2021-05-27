@@ -2,6 +2,7 @@ import { getPosts, postPost } from "./api.js";
 import ScrollHandler from "./scroll_handler.js";
 import { createPostEl } from "./html_create_el.js";
 import InvalidMessageAlert from "./invalid_message_alert.js";
+import Spinner from "./spinner.js";
 
 const formElemntsIDs = [
   "create-post-box",
@@ -19,9 +20,12 @@ export default class IndexViewManager {
   scrollHandler = null;
   lastPostID = null;
   alert_el = null;
+  spinner_el = null;
 
   async setup() {
     this.isLoading = true;
+
+    this.spinner_el.attach(this.view_el.parentNode);
 
     const posts = await getPosts();
     this.showPosts(posts);
@@ -29,7 +33,11 @@ export default class IndexViewManager {
       this.lastPostID = posts[posts.length - 1]["id"];
     }
 
-    this.scrollHandler.register();
+    if (posts.length < 10) {
+      this.spinner_el.remove();
+    } else {
+      this.scrollHandler.register().then(() => this.spinner_el.remove());
+    }
 
     this.isLoading = false;
   }
@@ -146,6 +154,7 @@ export default class IndexViewManager {
   constructor(view_el) {
     this.view_el = view_el;
     this.alert_el = new InvalidMessageAlert();
+    this.spinner_el = new Spinner();
 
     this.formSetup();
 

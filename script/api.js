@@ -22,8 +22,8 @@ export function getComments(postID, start) {
 
 export async function postComment(postID, content) {
   const postData = new FormData();
-  postData.append("post_id", this.postID);
-  postData.append("content", comment);
+  postData.append("post_id", postID);
+  postData.append("content", content);
 
   const response = await fetch("./php/create_comment.php", {
     method: "POST",

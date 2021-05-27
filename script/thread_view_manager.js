@@ -2,6 +2,7 @@ import { getPost, getComments, postComment } from "./api.js";
 import ScrollHandler from "./scroll_handler.js";
 import { createCommentEl, createThreadEl } from "./html_create_el.js";
 import InvalidMessageAlert from "./invalid_message_alert.js";
+import Spinner from "./spinner.js";
 
 export default class ThreadViewManager {
   isLoading = true;
@@ -11,6 +12,7 @@ export default class ThreadViewManager {
   postID = null;
   lastCommentID = null;
   alert_el = null;
+  spinner_el = null;
 
   static getPostID() {
     const query = new URLSearchParams(location.search);
@@ -20,14 +22,22 @@ export default class ThreadViewManager {
   async setup() {
     this.isLoading = true;
 
+    this.spinner_el.attach(this.view_el);
+
     const post = await this.fetchPost();
     this.showThread(post);
+    this.spinner_el.remove();
     this.commentsSection_el = this.view_el.querySelector("#comments-section");
     if (post.comments.length) {
       this.lastCommentID = post.comments[post.comments.length - 1]["id"];
     }
 
-    this.scrollHandler.register();
+    if (post.comments.length < 15) {
+      this.spinner_el.remove();
+    } else {
+      this.scrollHandler.register().then(() => this.spinner_el.remove());
+      this.spinner_el.move(this.commentsSection_el.parentNode);
+    }
 
     this.isLoading = false;
   }
@@ -89,6 +99,7 @@ export default class ThreadViewManager {
     this.postID = ThreadViewManager.getPostID();
     this.view_el = view_el;
     this.alert_el = new InvalidMessageAlert();
+    this.spinner_el = new Spinner();
 
     this.scrollHandler = new ScrollHandler(
       () => {
