@@ -79,7 +79,10 @@ export default class ThreadViewManager {
       return;
     }
 
-    postComment(this.postID, comment).then(() => location.reload());
+    postComment(this.postID, comment).then(
+      () => location.reload(),
+      () => this.alert_el.show()
+    );
   }
 
   constructor(view_el) {

@@ -20,18 +20,30 @@ export function getComments(postID, start) {
   );
 }
 
-export function postComment(postID, content) {
+export async function postComment(postID, content) {
   const postData = new FormData();
   postData.append("post_id", this.postID);
   postData.append("content", comment);
 
-  return fetch("./php/create_comment.php", { method: "POST", body: postData });
+  const response = await fetch("./php/create_comment.php", {
+    method: "POST",
+    body: postData,
+  });
+  if (response.status !== 200) return Promise.reject();
+
+  return response;
 }
 
-export function postPost(headline, content) {
+export async function postPost(headline, content) {
   const postData = new FormData();
   postData.append("headline", headline);
   postData.append("content", content);
 
-  return fetch("./php/create_post.php", { method: "POST", body: postData });
+  const response = await fetch("./php/create_post.php", {
+    method: "POST",
+    body: postData,
+  });
+  if (response.status !== 200) return Promise.reject();
+
+  return response;
 }

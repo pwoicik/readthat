@@ -137,7 +137,10 @@ export default class IndexViewManager {
       return;
     }
 
-    postPost(headline, content).then(() => location.reload());
+    postPost(headline, content).then(
+      () => location.reload(),
+      () => this.alert_el.show()
+    );
   }
 
   constructor(view_el) {
