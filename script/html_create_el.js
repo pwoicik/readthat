@@ -72,7 +72,7 @@ export function createCommentFormEl(onSubmit) {
   textbox_el.classList.add("editable");
   textbox_el.id = "comment-content";
   textbox_el.role = "textbox";
-  textbox_el.contentEditable = true;
+  textbox_el.contentEditable = "plaintext-only";
   textbox_el.oninput = () => {
     placeholder_el.style.display =
       textbox_el.innerText.length == 0 ? "inline" : "none";

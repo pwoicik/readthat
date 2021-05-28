@@ -106,6 +106,7 @@ export default class IndexViewManager {
 
     this.form.headline.input.onclick = this.expandForm.bind(this);
     this.form.headline.input.oninput = () => {
+      console.log(this.form.headline.input.innerText.length);
       this.form.headline.placeholder.style.display =
         this.form.headline.input.innerText.length == 0 ? "inline" : "none";
     };
