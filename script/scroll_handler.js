@@ -1,8 +1,7 @@
-let resolvePromise = null;
-
 export default class ScrollHandler {
   handlerFunction = null;
   isFinished = null;
+  isFinishedResolvePromise = null;
 
   constructor(updateCondition, updateFunction) {
     this.handlerFunction = this.createHandlerFunction(
@@ -10,7 +9,9 @@ export default class ScrollHandler {
       updateFunction
     );
 
-    this.isFinished = new Promise(resolve => (resolvePromise = resolve));
+    this.isFinished = new Promise(
+      resolve => (this.isFinishedResolvePromise = resolve)
+    );
   }
 
   createHandlerFunction(updateCondition, updateFunction) {
@@ -40,6 +41,6 @@ export default class ScrollHandler {
       passive: true,
     });
 
-    resolvePromise();
+    this.isFinishedResolvePromise();
   }
 }
